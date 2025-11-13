@@ -8,7 +8,7 @@
 
 ```bash
 # Clone repository
-git clone <repo-url> && cd vnstock_agent
+git clone https://github.com/thong6502/vnstock_agent.git && cd vnstock_agent
 ```
 
 ---
