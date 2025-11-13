@@ -7,7 +7,7 @@ from langchain.agents import create_agent
 from src.tools.company_info import get_company_info, get_events, get_news, get_officers, get_shareholders, get_subsidiaries
 from src.tools.current_time import get_current_time
 from src.tools.trading_data import get_price_history, calculate_smi, caculate_sma
-from src.scahema.agent_reponse import AgentSchema
+from src.schema.agent_reponse import AgentSchema
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
@@ -63,7 +63,7 @@ Thời gian        Giá đóng cửa        RSI14
 Do dữ liệu rất lớn (1141 dòng), nếu bạn cần toàn bộ bảng hoặc phân tích cụ thể, tôi có thể hỗ trợ xuất file hoặc tóm tắt theo yêu cầu. Bạn muốn tiếp tục thế nào?
 """
 
-my_agent = create_agent(
+vnstock_agent = create_agent(
         model=model,
         tools=tools,
         system_prompt=system_prompt,
@@ -82,12 +82,12 @@ def run_agent_query(user_message: str) -> AgentSchema:
         AgentSchema: Kết quả phản hồi đã được parse theo schema.
     """
 
-    result = my_agent.invoke({"messages": [{"role": "user", "content": user_message}]})
+    result = vnstock_agent.invoke({"messages": [{"role": "user", "content": user_message}]})
     response = result["structured_response"]
     return response
 
 
-# result = my_agent.invoke({"messages": [{"role": "user", "content": "Các công ty con thuộc VCB"}]})
+# result = vnstock_agent.invoke({"messages": [{"role": "user", "content": "Các công ty con thuộc VCB"}]})
 # reponse = result["structured_response"]
 # print(reponse.answer)
 

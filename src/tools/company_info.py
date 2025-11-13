@@ -1,7 +1,7 @@
 from langchain_core.tools import tool
 import pandas as pd
 from vnstock import Company
-from src.scahema.company import Symbol, Officers
+from src.schema.company import Symbol, Officers
 
 
 @tool(args_schema=Symbol)

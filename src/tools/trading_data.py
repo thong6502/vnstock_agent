@@ -1,7 +1,7 @@
 from langchain_core.tools import tool
 import pandas as pd
 from vnstock import Quote
-from src.scahema.trading import History
+from src.schema.trading import History
 
 @tool(args_schema=History)
 def get_price_history(symbol: str, start_date: str, end_date: str, interval: str, window_size: int) -> pd.DataFrame:
