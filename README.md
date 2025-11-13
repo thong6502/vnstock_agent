@@ -53,7 +53,7 @@ Mở **terminal thứ hai** và chạy lệnh:
 python -m test.test_api
 ```
 
-**📂 Bộ câu hỏi kiểm thử** được định nghĩa sẵn trong file:
+#### **📂 Bộ câu hỏi kiểm thử** được định nghĩa sẵn trong file:
 `test/test_api.py`
 
 > File này chứa danh sách các câu hỏi mẫu giúp đánh giá khả năng phản hồi và logic của API.
