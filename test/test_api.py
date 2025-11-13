@@ -4,7 +4,7 @@ def test_vnstock_endpoint() -> None:
     """
     Unit test cho API endpoint /vnstock.
     """
-    datas = [
+    datas_samples = [
         {"input": "Lấy dữ liệu OHLCV 10 ngày gần nhất HPG?"},
         {"input": "Lấy giá đóng cửa của mã VCB từ đầu tháng 11 theo khung 1d?"},
         {"input": "Trong các mã BID, TCB và VCB mã nào có giá mở cửa thấp nhất trong 10 ngày qua"},
@@ -19,7 +19,9 @@ def test_vnstock_endpoint() -> None:
         {"input": "Tính SMA9 và SMA20 của mã TCB từ đầu tháng 11 đến nay"},
     ]
 
-    for data in datas:
+    print("\n\n\n")
+
+    for data in datas_samples:
         response = requests.post("http://localhost:8000/vnstock", json=data, timeout=100)
         content = response.json()  # gọi phương thức
         print("Question:", data["input"])

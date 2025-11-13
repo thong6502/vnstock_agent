@@ -7,12 +7,12 @@ WORKDIR /vnstock_agent
 COPY ["pyproject.toml", "uv.lock", "./"]
 
 RUN apt-get update && \
-    apt-get install -y \
-    python3 python3-pip python3-venv python3-dev \
+    apt-get install -y python3 python3-pip python3-venv python3-dev && \
     pip3 install --no-cache-dir -U pip && \
     pip3 install uv && \
     uv sync --frozen && \
     rm -rf /var/lib/apt/lists/*
+
 
 ENV PATH="/vnstock_agent/.venv/bin:$PATH"
 

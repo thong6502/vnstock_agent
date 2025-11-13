@@ -4,7 +4,14 @@ services:
       context: .
       dockerfile: Dockerfile
 
-    command: ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
+    command: >
+      sh -c "
+        uvicorn src.api.main:app --host 0.0.0.0 --port 8000 &
+        sleep 35
+        python -u -m test.test_api 1>&2
+      "
+
+
 
     ports:
       - "8000:8000"
